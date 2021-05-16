@@ -18,13 +18,14 @@
                     Random Word Generator
                 </h1>
             </div>
-
+            {% comment %} Counter for number of times string has been generated. {% endcomment %}
             <div class="row align-items-center">
                 <p class="col text-center">
                     Random Word Attempt Number: {{ request.session.count }}
                 </p>
             </div>
 
+            {% comment %} Random string is displayed. {% endcomment %}
             <div class="row mb-3">
                 <div class="col text-center align-self-center">
                     
@@ -37,6 +38,7 @@
                 </div>
             </div>
 
+            {% comment %} Buttons for generating new string or resseting the counter. {% endcomment %}
             <div class="row justify-content-md-center">
                 <form action="/random_word" method="POST" class="col-md-auto">
                     {% csrf_token %}
