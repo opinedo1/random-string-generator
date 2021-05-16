@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Random Word Generator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="row align-items-center">
+                <h1 class="col text-center text-primary">
+                    Random Word Generator
+                </h1>
+            </div>
+
+            <div class="row align-items-center">
+                <p class="col text-center">
+                    Random Word Attempt Number: {{ request.session.count }}
+                </p>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col text-center align-self-center">
+                    
+                </div>
+                <div class="col text-center border border-dark align-self-center">
+                    <b>Random Word: </b> <div class="class text-success font-weight-bold">{{ request.session.str }}</div>
+                </div>
+                <div class="col text-center align-self-center">
+                    
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <form action="/random_word" method="POST" class="col-md-auto">
+                    {% csrf_token %}
+                    <input type="submit" value="Generate" class="btn btn-primary">
+                </form>
+
+                <form action="random_word/reset_counter" method="POST" class="col-md-auto">
+                    {% csrf_token %}
+                    <input type="submit" value="Reset" class="btn btn-warning">
+                </form>
+            </div>
+    </div>
+    </body>
+
+
+</html>
